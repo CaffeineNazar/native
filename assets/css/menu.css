@@ -1,0 +1,262 @@
+<style>
+        :root {
+            --gibs-blue: #1e40af;
+            --gibs-blue-light: #3b82f6;
+            --gibs-blue-dark: #1e3a8a;
+            --gibs-gold: #f59e0b;
+            --gibs-gold-light: #fbbf24;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+        
+        .main-card {
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+        
+        .logo-wrapper {
+    width: 112px;
+    height: 112px;
+    border-radius: 999px;
+    background: radial-gradient(circle at 30% 20%, #ffffff 0%, #e5edf8 55%, #d1e0ff 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+        0 10px 25px rgba(15, 23, 42, 0.18),
+        0 0 0 1px rgba(148, 163, 184, 0.35);
+    padding: 16px;
+    margin: 0 auto 1.4rem;
+    position: relative;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.logo-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border-radius: inherit;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    background: radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.9) 0%, transparent 45%);
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+    opacity: 0.8;
+}
+
+.logo-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 6px rgba(15, 23, 42, 0.15));
+    transition: transform 0.35s ease;
+}
+
+/* Hover effect */
+.logo-wrapper:hover {
+    transform: translateY(-4px) scale(1.03) rotate(-1deg);
+    box-shadow:
+        0 16px 35px rgba(15, 23, 42, 0.25),
+        0 0 0 1px rgba(129, 140, 248, 0.6);
+}
+
+.logo-wrapper:hover::before {
+    opacity: 1;
+}
+
+.logo-wrapper:hover img {
+    transform: scale(1.03);
+}
+
+        
+        .main-title {
+            background: linear-gradient(135deg, #0f172a 0%, #1d4ed8 40%, #38bdf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            font-size: 2.2rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 0.3rem;
+        }
+        
+        .subtitle {
+            color: #64748b;
+            font-size: 0.95rem;
+            font-weight: 400;
+        }
+        
+        .divider-line {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #1e40af, #3b82f6, #fbbf24);
+            margin: 1rem auto 0;
+            border-radius: 999px;
+        }
+        
+        .menu-card {
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            height: 100%;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 1.5rem;
+            text-decoration: none;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .menu-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(45deg);
+            transition: all 0.5s;
+        }
+        
+        .menu-card:hover::before {
+            top: -100%;
+            right: -100%;
+        }
+        
+        .menu-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+            color: #fff;
+        }
+        
+        .menu-card.disabled {
+            pointer-events: none;
+            cursor: not-allowed;
+            opacity: 0.7;
+            filter: grayscale(30%);
+        }
+        
+        .menu-card .icon-wrapper {
+            font-size: 3.2rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.2);
+            width: 90px;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .menu-card .menu-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.5px;
+        }
+        
+        .menu-card .menu-description {
+            font-size: 0.85rem;
+            opacity: 0.98;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            font-weight: 400;
+        }
+        
+        .coming-soon-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            z-index: 2;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Gradient skema warna untuk setiap menu */
+        .menu-card-blue {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+        }
+        
+        .menu-card-gold {
+            background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+        }
+        
+        .menu-card-teal {
+            background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+        }
+        
+        .menu-card-green {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+        }
+        
+        .menu-card-purple {
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+        }
+        
+        .menu-card-orange {
+            background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
+        }
+        
+        .menu-card::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: -50px;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .menu-card {
+                min-height: 180px;
+            }
+            
+            .menu-card .icon-wrapper {
+                font-size: 2.6rem;
+                width: 80px;
+                height: 80px;
+            }
+            
+            .menu-card .menu-title {
+                font-size: 1.05rem;
+            }
+            
+            .main-title {
+                font-size: 1.6rem;
+            }
+            
+            .logo-wrapper {
+                width: 110px;
+                height: 110px;
+            }
+        }
+    </style>
